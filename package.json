@@ -9,10 +9,24 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "homepage": "https://github.com/estruyf/playwright-github-actions-reporter",
+  "homepage": "https://github.com/estruyf/vscrui",
   "bugs": {
-    "url": "https://github.com/estruyf/playwright-github-actions-reporter/issues"
+    "url": "https://github.com/estruyf/vscrui/issues"
   },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/estruyf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/estruyf/vscrui.git"
+  },
+  "keywords": [
+    "vscode",
+    "ui",
+    "toolkit",
+    "react"
+  ],
   "scripts": {
     "build": "npm run build:icons && vite build",
     "build:icons": "node ./scripts/generate-icons.mjs",
