@@ -1,0 +1,38 @@
+name: Release beta
+on:
+  push:
+    branches:
+      - dev
+
+# Cancel the previous runs (if any are still waiting)
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: npm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run build
+        run: npm run build
+
+      - name: Update the package version
+        if: github.ref == 'refs/heads/dev'
+        run: node scripts/update-package-version.js $GITHUB_RUN_ID
+
+      - name: Publish beta release
+        run: npm publish --tag next --access public
+        if: github.ref == 'refs/heads/dev'
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

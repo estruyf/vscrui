@@ -1,0 +1,48 @@
+{
+  "name": "vscrui",
+  "description": "A React components library for building webview-based extensions with React in Visual Studio Code.",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "homepage": "https://github.com/estruyf/playwright-github-actions-reporter",
+  "bugs": {
+    "url": "https://github.com/estruyf/playwright-github-actions-reporter/issues"
+  },
+  "scripts": {
+    "build": "npm run build:icons && vite build",
+    "build:icons": "node ./script/generate-icons.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.9.0",
+    "@storybook/addon-essentials": "^8.2.9",
+    "@storybook/addon-interactions": "^8.2.9",
+    "@storybook/addon-links": "^8.2.9",
+    "@storybook/addon-themes": "^8.2.9",
+    "@storybook/blocks": "^8.2.9",
+    "@storybook/react": "^8.2.9",
+    "@storybook/react-vite": "^8.2.9",
+    "@storybook/test": "^8.2.9",
+    "@types/react": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vscode/codicons": "^0.0.36",
+    "babel-plugin-styled-components": "^2.1.4",
+    "react": "^18.3.1",
+    "storybook": "^8.2.9",
+    "styled-components": "^6.1.13",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.3",
+    "vite-plugin-dts": "^4.2.1"
+  },
+  "peerDependencies": {
+    "@types/react": "*",
+    "react": "^17 || ^18"
+  }
+}
