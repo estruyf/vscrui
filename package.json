@@ -14,8 +14,9 @@
     "url": "https://github.com/estruyf/playwright-github-actions-reporter/issues"
   },
   "scripts": {
+    "prepublish": "npm run build",
     "build": "npm run build:icons && vite build",
-    "build:icons": "node ./script/generate-icons.mjs",
+    "build:icons": "node ./scripts/generate-icons.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
