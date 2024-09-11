@@ -36,7 +36,7 @@ const CheckboxElm = styled.label`
 const SvgElm = styled.svg`
   background: var(--vscode-checkbox-background, #3c3c3c);
   height: 1px solid var(--vscode-checkbox-border, #3c3c3c);
-  border-radius: 3px;
+  border-radius: 2px;
   color: var(--vscode-checkbox-foreground, #f0f0f0);
   display: inline-block;
   width: 16px;

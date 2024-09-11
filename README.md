@@ -19,6 +19,7 @@ The following components are available in the library:
 - [x] Badge
 - [x] Button
 - [x] Checkbox
+- [x] Dropdown
 - [x] Icon
 - [x] Label
 - [x] Tag
