@@ -23,6 +23,7 @@ The following components are available in the library:
 - [x] Icon
 - [x] Label
 - [x] Tag
+- [ ] TextField (🚧 WIP 🚧)
 
 > [!WARNING]
 > When using the `Icon` component, make sure to import the Codicon CSS file in your project. You can use the following import statement: `import 'vscrui/dist/codicon.css';`.

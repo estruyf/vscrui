@@ -139,7 +139,7 @@ const ListItemElm = styled.button`
 		color: var(--vscode-list-activeSelectionForeground, #ffffff);
 	}
 
-  &.disabled {
+  &:disabled {
 		cursor: not-allowed;
 		opacity: 0.4;
 
@@ -258,9 +258,8 @@ export const Dropdown = ({
                     <li>
                       <ListItemElm
                         key={index}
-                        className={`${selectedValue === value ? "selected" : ""} ${disabled ? "disabled" : ""}`}
+                        className={`${selectedValue === value ? "selected" : ""}`}
                         aria-selected={selectedValue === value ? "true" : "false"}
-                        aria-disabled={disabled}
                         disabled={disabled}
                         onClick={() => onSelect(value)}>
                         {label}
