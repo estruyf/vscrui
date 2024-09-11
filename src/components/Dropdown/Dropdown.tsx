@@ -31,10 +31,6 @@ const SelectElm = styled.div`
   outline: none;
   vertical-align: top;
 
-  &:focus-visible {
-		border-color: var(--vscode-focusBorder, #007fd4);
-  }
-
   &.disabled {
     opacity: 0.4;
     pointer-events: none;
@@ -58,12 +54,8 @@ const TriggerElm = styled.button`
   line-height: normal;
   padding: 2px 6px 2px 8px;
 
-  &:not([disabled]):hover {
-		background: var(--vscode-dropdown-background, #3c3c3c);
-		border-color: var(--vscode-dropdown-border, #3c3c3c);
-	}
-
-  &:not([disabled]):active {
+  &:not([disabled]):active,
+  &.open {
     border-color: var(--vscode-focusBorder, #007fd4);
   }
 
@@ -100,7 +92,8 @@ const ListboxElm = styled.div<{ position: string }>`
   }
 `;
 
-const ListItemElm = styled.li`
+const ListItemElm = styled.button`
+  all: unset;
   font-family: var(--vscode-font-family);
   font-size: var(--vscode-font-size);
   color: var(--vscode-foreground);
@@ -116,6 +109,7 @@ const ListItemElm = styled.li`
   user-select: none;
   white-space: nowrap;
   text-overflow: ellipsis;
+  width: 100%;
 
   &:focus-visible {
 		border-color: var(--vscode-focusBorder, #007fd4);
@@ -227,9 +221,10 @@ export const Dropdown = ({
 
   return (
     <SelectElm
-      className={`${className || ""} ${isDisabled ? "disabled" : ""} ${className || ""}`}
+      className={`${isDisabled ? "disabled" : ""} ${className || ""}`}
       ref={dropdownRef}>
       <TriggerElm
+        className={`${isOpen ? "open" : ""}`}
         disabled={isDisabled}
         onClick={onClick}>
         <span>{selectedValue || placeholder || firstOption}</span>
@@ -260,14 +255,17 @@ export const Dropdown = ({
                   const disabled = typeof option === 'string' ? false : option.disabled;
 
                   return (
-                    <ListItemElm
-                      key={index}
-                      className={`${selectedValue === value ? "selected" : ""} ${disabled ? "disabled" : ""}`}
-                      aria-selected={selectedValue === value ? "true" : "false"}
-                      aria-disabled={disabled}
-                      onClick={() => onSelect(value)}>
-                      {label}
-                    </ListItemElm>
+                    <li>
+                      <ListItemElm
+                        key={index}
+                        className={`${selectedValue === value ? "selected" : ""} ${disabled ? "disabled" : ""}`}
+                        aria-selected={selectedValue === value ? "true" : "false"}
+                        aria-disabled={disabled}
+                        disabled={disabled}
+                        onClick={() => onSelect(value)}>
+                        {label}
+                      </ListItemElm>
+                    </li>
                   );
                 })
               }
