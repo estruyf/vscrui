@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Decorator, Preview } from '@storybook/react';
 import LightTheme from './themes/light';
 import DarkTheme from './themes/dark';
@@ -10,16 +10,10 @@ enum VscodeTheme {
   light = 'light',
   highContrastLight = 'high-contrast-light',
   dark = 'dark',
-  highContrastDark = 'high-contrast-dark',
+  highContrastDark = 'high-contrast',
 }
 
 const GlobalStyle = createGlobalStyle(() => css`
-  // smooth light-dark mode transition
-  * {
-    transition: all 250ms ease-in;
-    transition-property: background, color;
-  }
-
   body {
     margin: 0;
     padding: 0;
@@ -35,13 +29,19 @@ const GlobalStyle = createGlobalStyle(() => css`
 `);
 
 const withTheme: Decorator = (StoryFn, { globals: { theme = VscodeTheme.light } }) => {
+  const vscodeTheme = theme || VscodeTheme.light;
+
+  useEffect(() => {
+    document.body.setAttribute('data-vscode-theme-kind', `vscode-${vscodeTheme}`);
+  }, [vscodeTheme]);
+
   return (
     <ThemeProvider theme={{}}>
 
-      {theme === VscodeTheme.light && (<LightTheme />)}
-      {theme === VscodeTheme.highContrastLight && (<HighContrastLightTheme />)}
-      {theme === VscodeTheme.dark && (<DarkTheme />)}
-      {theme === VscodeTheme.highContrastDark && (<HighContrastDarkTheme />)}
+      {vscodeTheme === VscodeTheme.light && (<LightTheme />)}
+      {vscodeTheme === VscodeTheme.highContrastLight && (<HighContrastLightTheme />)}
+      {vscodeTheme === VscodeTheme.dark && (<DarkTheme />)}
+      {vscodeTheme === VscodeTheme.highContrastDark && (<HighContrastDarkTheme />)}
 
       <GlobalStyle />
 

@@ -43,8 +43,8 @@ const TriggerElm = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--vscode-dropdown-background, #3c3c3c);
-  border: 1px solid var(--vscode-dropdown-border, #3c3c3c);
+  background: var(--vscode-dropdown-background);
+  border: 1px solid var(--vscode-dropdown-border);
   border-radius: 2px;
   height: 26px;
   box-sizing: border-box;
@@ -56,17 +56,17 @@ const TriggerElm = styled.button`
 
   &:not([disabled]):active,
   &.open {
-    border-color: var(--vscode-focusBorder, #007fd4);
+    border-color: var(--vscode-focusBorder);
   }
 
   &:focus {
-    border-color: var(--vscode-focusBorder, #007fd4);
+    border-color: var(--vscode-focusBorder);
   }
 `;
 
 const ListboxElm = styled.div<{ position: string }>`
-  background: var(--vscode-dropdown-background, #3c3c3c);
-  border: 1px solid var(--vscode-focusBorder, #007fd4);
+  background: var(--vscode-dropdown-background);
+  border: 1px solid var(--vscode-focusBorder);
   box-sizing: border-box;
   left: 0px;
   max-height: 200px;
@@ -112,32 +112,40 @@ const ListItemElm = styled.button`
   width: 100%;
 
   &:focus-visible {
-		border-color: var(--vscode-focusBorder, #007fd4);
-		background: var(--vscode-list-activeSelectionBackground, #094771);
+		border-color: var(--vscode-focusBorder);
+		background: var(--vscode-list-activeSelectionBackground);
 		color: var(--vscode-foreground);
   }
 
-  &[aria-selected="true"] {
-    background: var(--vscode-list-activeSelectionBackground, #094771);
+  &.active {
+    background: var(--vscode-list-activeSelectionBackground);
     border: 1px solid transparent;
-    color: var(--vscode-list-activeSelectionForeground, #ffffff);
+    color: var(--vscode-list-activeSelectionForeground);
   }
 
   &:active {
-		background: var(--vscode-list-activeSelectionBackground, #094771);
-		color: var(--vscode-list-activeSelectionForeground, #ffffff);
+		background: var(--vscode-list-activeSelectionBackground);
+		color: var(--vscode-list-activeSelectionForeground);
   }
 
-  &:not([aria-selected='true']):hover {
-    background: var(--vscode-list-activeSelectionBackground, #094771);
+  &:not(.active):hover {
+    background: var(--vscode-list-activeSelectionBackground);
 		border: 1px solid transparent;
-		color: var(--vscode-list-activeSelectionForeground, #ffffff);
+		color: var(--vscode-list-activeSelectionForeground);
   }
 
-  &:not([aria-selected='true']):active {
-		background: var(--vscode-list-activeSelectionBackground, #094771);
-		color: var(--vscode-list-activeSelectionForeground, #ffffff);
+  &:not(.active):active {
+		background: var(--vscode-list-activeSelectionBackground);
+		color: var(--vscode-list-activeSelectionForeground);
 	}
+
+  body[data-vscode-theme-kind='vscode-high-contrast'] &.active,
+  body[data-vscode-theme-kind='vscode-high-contrast-light'] &.active,
+  body[data-vscode-theme-kind='vscode-high-contrast'] &:not(.active):hover,
+  body[data-vscode-theme-kind='vscode-high-contrast-light'] &:not(.active):hover {
+    border-style: dotted;
+    border-color: var(--vscode-list-focusOutline);
+  }
 
   &:disabled {
 		cursor: not-allowed;
@@ -145,8 +153,17 @@ const ListItemElm = styled.button`
 
     &:hover {
       background: inherit;
+      border-color: transparent;
     }
 	}
+
+  body[data-vscode-theme-kind='vscode-high-contrast'] &:disabled,
+  body[data-vscode-theme-kind='vscode-high-contrast-light'] &:disabled,
+  body[data-vscode-theme-kind='vscode-high-contrast'] &:disabled:hover,
+  body[data-vscode-theme-kind='vscode-high-contrast-light'] &:disabled:hover {
+    background: inherit;
+    border-color: transparent;
+  }
 `;
 
 export const Dropdown = ({
@@ -160,6 +177,7 @@ export const Dropdown = ({
   onChange,
 }: React.PropsWithChildren<IDropdownProps>) => {
   const [selectedValue, setSelectedValue] = React.useState<string | undefined>(undefined);
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
   const [isOpen, setIsOpen] = React.useState(open);
 
   const dropdownRef = React.useRef<HTMLDivElement>(null);
@@ -167,6 +185,7 @@ export const Dropdown = ({
   const handleClickOutside = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsOpen(false);
+      setActiveIndex(null);
     }
   };
 
@@ -183,6 +202,33 @@ export const Dropdown = ({
     }
   }, [selectedValue]);
 
+  const onKeyDown = React.useCallback((e: React.KeyboardEvent) => {
+    if (isOpen) {
+      e.preventDefault();
+    }
+
+    if (isOpen && e.key === 'Escape') {
+      setIsOpen(false);
+    } else if (isOpen && e.key === 'ArrowDown') {
+      if (activeIndex === null) {
+        setActiveIndex(0);
+      } else {
+        setActiveIndex(Math.min(activeIndex + 1, options.length - 1));
+      }
+    } else if (isOpen && e.key === 'ArrowUp') {
+      if (activeIndex === null) {
+        setActiveIndex(options.length - 1);
+      } else {
+        setActiveIndex(Math.max(activeIndex - 1, 0));
+      }
+    } else if (isOpen && e.key === 'Enter') {
+      const option = options[activeIndex || 0];
+      const value = typeof option === 'string' ? option : option.value;
+      setIsOpen(false);
+      onSelect(value);
+    }
+  }, [activeIndex, isOpen, onSelect]);
+
   const isDisabled = React.useMemo(() => disabled || options.length === 0, [disabled, options]);
 
   const firstOption = React.useMemo(() => {
@@ -193,6 +239,7 @@ export const Dropdown = ({
   }, [options]);
 
   const onClick = React.useCallback(() => {
+    console.log('onClick', disabled, options.length);
     if (!disabled && options.length > 0) {
       setIsOpen(!isOpen);
     }
@@ -214,14 +261,22 @@ export const Dropdown = ({
     if (value !== undefined) {
       const optionValue = typeof value === 'string' ? value : value.value;
       setSelectedValue(optionValue);
+
+      const index = options.findIndex((option) => {
+        const optionValue = typeof option === 'string' ? option : option.value;
+        return optionValue === value;
+      });
+      setActiveIndex(index);
     } else {
       setSelectedValue('');
+      setActiveIndex(null);
     }
-  }, [value]);
+  }, [value, options]);
 
   return (
     <SelectElm
       className={`${isDisabled ? "disabled" : ""} ${className || ""}`}
+      onKeyDown={onKeyDown}
       ref={dropdownRef}>
       <TriggerElm
         className={`${isOpen ? "open" : ""}`}
@@ -255,10 +310,10 @@ export const Dropdown = ({
                   const disabled = typeof option === 'string' ? false : option.disabled;
 
                   return (
-                    <li>
+                    <li key={index} onMouseEnter={() => setActiveIndex(index)}>
                       <ListItemElm
                         key={index}
-                        className={`${selectedValue === value ? "selected" : ""}`}
+                        className={`${(activeIndex === null && selectedValue === value) || (activeIndex === index) ? "active" : ""}`}
                         aria-selected={selectedValue === value ? "true" : "false"}
                         disabled={disabled}
                         onClick={() => onSelect(value)}>
