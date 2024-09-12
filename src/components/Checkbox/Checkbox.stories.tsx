@@ -17,6 +17,6 @@ export const Default: StoryObj<typeof Checkbox> = {
     id: "checkbox",
     indeterminate: false,
     disabled: false,
-    onChange: (checked: boolean) => alert(`Checkbox checked: ${checked}`),
+    onChange: (checked: boolean) => console.log(`Checkbox checked: ${checked}`),
   }
 };

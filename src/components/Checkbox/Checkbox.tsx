@@ -34,14 +34,18 @@ const CheckboxElm = styled.label`
 `;
 
 const SvgElm = styled.svg`
-  background: var(--vscode-checkbox-background, #3c3c3c);
-  height: 1px solid var(--vscode-checkbox-border, #3c3c3c);
+  background: var(--vscode-checkbox-background);
+  border: 1px solid var(--vscode-checkbox-border);
   border-radius: 2px;
-  color: var(--vscode-checkbox-foreground, #f0f0f0);
+  color: var(--vscode-checkbox-foreground);
   display: inline-block;
   width: 16px;
   height: 16px;
   transition: 60ms transform ease-in-out;
+
+  &:active, &:focus, &:focus-visible {
+    border-color: var(--vscode-focusBorder);
+  }
 `;
 
 const SpanElm = styled.span`
