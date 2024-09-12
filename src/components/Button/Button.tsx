@@ -17,25 +17,25 @@ const ButtonElm = styled.button`
   font-family: var(--vscode-font-family);
   font-size: var(--vscode-font-size, 13px);
   line-height: normal;
-  color: var(--vscode-button-foreground, #ffffff);
-  background: var(--vscode-button-background, #0e639c);
-  border: 1px solid var(--vscode-button-border, transparent);
+  color: var(--vscode-button-foreground);
+  background: var(--vscode-button-background);
+  border: 1px solid var(--vscode-button-border);
   border-radius: 2px;
   padding: 4px 11px;
   fill: currentColor;
   cursor: pointer;
 
   &:focus-visible {
-    outline: 1px solid var(--vscode-focusBorder, #007fd4);
+    outline: 1px solid var(--vscode-focusBorder);
     outline-offset: 2px;
   }
 
   &:active {
-    background: var(--vscode-button-background, #0e639c);
+    background: var(--vscode-button-background);
   }
 
   &:hover {
-    background: var(--vscode-button-hoverBackground, #1177bb);
+    background: var(--vscode-button-hoverBackground);
   }
 
   &::-moz-focus-inner {
@@ -43,15 +43,15 @@ const ButtonElm = styled.button`
   }
 
   &.secondary {
-    background: var(--vscode-button-secondaryBackground, #3a3d41);
-    color: var(--vscode-button-secondaryForeground, #ffffff);
+    background: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
 
     &:active {
-      background: var(--vscode-button-secondaryBackground, #3a3d41);
+      background: var(--vscode-button-secondaryBackground);
     }
 
     &:hover {
-      background: var(--vscode-button-secondaryHoverBackground, #484b4f);
+      background: var(--vscode-button-secondaryHoverBackground);
     }
   }
 
@@ -59,12 +59,12 @@ const ButtonElm = styled.button`
     background: transparent;
     border: none;
     border-radius: 5px;
-    color: var(--vscode-foreground, #cccccc);
+    color: var(--vscode-foreground);
     padding: 3px;
 
     &:hover {
       background: rgba(90, 93, 94, 0.31);
-      outline: 1px dotted var(--vscode-contrastActiveBorder, #f38518);
+      outline: 1px dotted var(--vscode-contrastActiveBorder);
       outline-offset: -1px;
     }
 
@@ -75,11 +75,11 @@ const ButtonElm = styled.button`
 
   &:disabled {
     opacity: 0.4;
-    background: var(--vscode-button-background, #0e639c);
+    background: var(--vscode-button-background);
     cursor: not-allowed;
 
     &.secondary {
-      background: var(--vscode-button-secondaryBackground, #3a3d41);
+      background: var(--vscode-button-secondaryBackground);
     }
     
     &.icon {
