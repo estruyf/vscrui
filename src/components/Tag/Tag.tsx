@@ -20,10 +20,13 @@ const TagElm = styled.div`
 
 export const Tag = ({
   children,
-  className
+  className,
+  ...rest
 }: React.PropsWithChildren<ITagProps>) => {
   return (
-    <TagElm className={`${className || ""}`}>
+    <TagElm
+      className={`${className || ""}`}
+      {...rest}>
       {children}
     </TagElm>
   );

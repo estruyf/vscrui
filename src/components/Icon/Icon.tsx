@@ -39,7 +39,8 @@ export const Icon = ({
   className,
   name,
   spin = false,
-  size = 16
+  size = 16,
+  ...rest
 }: IIconProps) => {
   const iconSize = React.useMemo(() => {
     if (typeof size === "number") {
@@ -52,6 +53,7 @@ export const Icon = ({
     <IconElm
       className={`codicon codicon-${name} ${spin ? "codicon-spin" : ""} ${className || ""}`}
       style={{ fontSize: iconSize }}
+      {...rest}
     />
   );
 };

@@ -2,7 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { BaseComponentProps } from '../../models';
 
-export interface ILabelProps extends BaseComponentProps { }
+type CombinedProps = React.LabelHTMLAttributes<HTMLLabelElement> & BaseComponentProps;
+
+export interface ILabelProps extends CombinedProps { }
 
 const LabelElm = styled.label`
   color: var(--vscode-foreground);
@@ -19,10 +21,13 @@ const LabelElm = styled.label`
 
 export const Label = ({
   children,
-  className
+  className,
+  ...rest
 }: React.PropsWithChildren<ILabelProps>) => {
   return (
-    <LabelElm className={`${className || ""}`}>
+    <LabelElm
+      className={`${className || ""}`}
+      {...rest}>
       {children}
     </LabelElm>
   );

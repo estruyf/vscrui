@@ -95,6 +95,7 @@ export const Button = ({
   disabled = false,
   type = 'button',
   onClick = undefined,
+  ...rest
 }: React.PropsWithChildren<IButtonProps>) => {
   return (
     <ButtonElm
@@ -102,6 +103,7 @@ export const Button = ({
       disabled={disabled}
       onClick={onClick}
       type={type}
+      {...rest}
     >
       {children}
     </ButtonElm>

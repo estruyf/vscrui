@@ -2,8 +2,9 @@ import * as React from 'react';
 import { BaseComponentProps } from '../../models';
 import styled from 'styled-components';
 import { Label } from '../Label';
+import useId from '../../hooks/useId';
 
-export interface ITextFieldProps extends BaseComponentProps {
+export interface ITextFieldProps extends Omit<BaseComponentProps, 'onChange'> {
   disabled?: boolean;
   readonly?: boolean;
   placeholder?: string;
@@ -80,8 +81,10 @@ export const TextField = ({
   value,
   onChange,
   placeholder,
+  ...rest
 }: React.PropsWithChildren<ITextFieldProps>) => {
   const [inputValue, setInputValue] = React.useState(value);
+  const id = useId();
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -94,11 +97,14 @@ export const TextField = ({
 
 
   return (
-    <TextFieldElm className={`${className || ""}`}>
-      {children && <LabelElm>{children}</LabelElm>}
+    <TextFieldElm
+      className={`${className || ""}`}
+      {...rest}>
+      {children && <LabelElm htmlFor={id}>{children}</LabelElm>}
 
       <InputElm
         type='text'
+        id={id}
         defaultValue={inputValue}
         placeholder={placeholder}
         disabled={disabled}

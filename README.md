@@ -19,14 +19,19 @@ The following components are available in the library:
 - [x] Badge
 - [x] Button
 - [x] Checkbox
+- [x] Divider
 - [x] Dropdown
 - [x] Icon
 - [x] Label
 - [x] Tag
-- [ ] TextField (🚧 WIP 🚧)
+- [x] TextField
 
 > [!WARNING]
 > When using the `Icon` component, make sure to import the Codicon CSS file in your project. You can use the following import statement: `import 'vscrui/dist/codicon.css';`.
+
+### Future Components
+
+- [ ] Tooltip
 
 ## Installation
 

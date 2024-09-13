@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { BaseComponentProps } from '../../models';
 import styled from 'styled-components';
+import useId from '../../hooks/useId';
 
-export interface ICheckboxProps extends BaseComponentProps {
+export interface ICheckboxProps extends Omit<BaseComponentProps, 'onChange'> {
   checked?: boolean;
-  id?: string;
   indeterminate?: boolean;
   disabled?: boolean;
   onChange?: (checked: boolean) => void;
@@ -87,13 +87,14 @@ export const Checkbox = ({
   checked,
   children,
   className,
-  id,
   indeterminate,
   disabled,
-  onChange
+  onChange,
+  ...rest
 }: React.PropsWithChildren<ICheckboxProps>) => {
   const [isChecked, setIsChecked] = React.useState(!!checked);
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const id = useId();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
@@ -112,10 +113,11 @@ export const Checkbox = ({
 
   return (
     <CheckboxElm
-      htmlFor={id || "checkbox"}
-      className={`${className || ""} ${disabled ? "disabled" : ""}`}>
+      htmlFor={id}
+      className={`${className || ""} ${disabled ? "disabled" : ""}`}
+      {...rest}>
       <input
-        id={id || "checkbox"}
+        id={id}
         ref={inputRef}
         type="checkbox"
         checked={isChecked}

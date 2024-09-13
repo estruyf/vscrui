@@ -25,10 +25,11 @@ const BadgeElm = styled.span`
 
 export const Badge = ({
   className,
-  children
+  children,
+  ...rest
 }: React.PropsWithChildren<IBadgeProps>) => {
   return (
-    <BadgeElm className={className || ""}>
+    <BadgeElm className={className || ""} {...rest}>
       {children}
     </BadgeElm>
   );

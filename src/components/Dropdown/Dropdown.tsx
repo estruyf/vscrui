@@ -8,7 +8,7 @@ export interface DropdownOption {
   disabled?: boolean;
 }
 
-export interface IDropdownProps extends BaseComponentProps {
+export interface IDropdownProps extends Omit<BaseComponentProps, 'onChange'> {
   open?: boolean;
   disabled?: boolean;
   options: string[] | DropdownOption[];
@@ -175,6 +175,7 @@ export const Dropdown = ({
   placeholder = "",
   position = 'below',
   onChange,
+  ...rest
 }: React.PropsWithChildren<IDropdownProps>) => {
   const [selectedValue, setSelectedValue] = React.useState<string | undefined>(undefined);
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
@@ -277,7 +278,8 @@ export const Dropdown = ({
     <SelectElm
       className={`${isDisabled ? "disabled" : ""} ${className || ""}`}
       onKeyDown={onKeyDown}
-      ref={dropdownRef}>
+      ref={dropdownRef}
+      {...rest}>
       <TriggerElm
         className={`${isOpen ? "open" : ""}`}
         disabled={isDisabled}
