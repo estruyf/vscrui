@@ -40,8 +40,10 @@ const InputElm = styled.input`
   &:hover,
 	&:focus-visible,
 	&:disabled,
-	&:active {
+	&:active,
+  &:focus {
 		outline: none;
+    box-shadow: none;
 	}
 
   &:not([disabled]):hover {
@@ -54,6 +56,7 @@ const InputElm = styled.input`
 		border-color: var(--vscode-focusBorder);
 	}
 
+  &:not([disabled]):focus,
   &:not([disabled]):focus-within {
 		border-color: var(--vscode-focusBorder);
   }
