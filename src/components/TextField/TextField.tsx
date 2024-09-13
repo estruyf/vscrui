@@ -15,6 +15,7 @@ const TextFieldElm = styled.div`
   font-family: var(--vscode-font-family);
   font-size: var(--vscode-font-size);
   display: inline-block;
+  min-width: 100px;
 `;
 
 const LabelElm = styled(Label)`
@@ -23,6 +24,7 @@ const LabelElm = styled(Label)`
 
 const InputElm = styled.input`
   appearance: none;
+  font-size: var(--vscode-font-size);
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -32,8 +34,8 @@ const InputElm = styled.input`
   border-radius: 2px;
   border: 1px solid var(--vscode-dropdown-border);
   height: 26px;
-  min-width: 100px;
   padding: 0 9px;
+  width: 100%;
 
   &:hover,
 	&:focus-visible,
