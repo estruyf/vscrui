@@ -14,7 +14,7 @@ export interface IDropdownProps extends Omit<BaseComponentProps, 'onChange'> {
   options: string[] | DropdownOption[];
   value?: string | DropdownOption;
   placeholder?: string;
-  position: 'above' | 'below';
+  position?: 'above' | 'below';
   onChange?: (value: string | DropdownOption | undefined) => void;
 }
 
