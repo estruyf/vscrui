@@ -49,10 +49,10 @@ const TriggerElm = styled.button`
   height: 26px;
   box-sizing: border-box;
   contain: content;
-  width: 100px;
   cursor: pointer;
   line-height: normal;
   padding: 2px 6px 2px 8px;
+  width: 100%;
 
   &:not([disabled]):active,
   &.open {
@@ -61,6 +61,10 @@ const TriggerElm = styled.button`
 
   &:focus {
     border-color: var(--vscode-focusBorder);
+  }
+
+  &:hover {
+    background: inherit;
   }
 `;
 
@@ -183,12 +187,12 @@ export const Dropdown = ({
 
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = React.useCallback((event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsOpen(false);
       setActiveIndex(null);
     }
-  };
+  }, [dropdownRef]);
 
   const onSelect = React.useCallback((value: string) => {
     if (value !== selectedValue) {
@@ -199,8 +203,8 @@ export const Dropdown = ({
 
       setSelectedValue(value);
       onChange && onChange(selectedOption);
-      setIsOpen(false);
     }
+    setIsOpen(false);
   }, [selectedValue]);
 
   const onKeyDown = React.useCallback((e: React.KeyboardEvent) => {
@@ -240,23 +244,43 @@ export const Dropdown = ({
   }, [options]);
 
   const onClick = React.useCallback(() => {
-    console.log('onClick', disabled, options.length);
     if (!disabled && options.length > 0) {
       setIsOpen(!isOpen);
     }
   }, [disabled, options, isOpen]);
 
+  const displayValue = React.useMemo(() => {
+    if (!selectedValue) {
+      return undefined;
+    }
+
+    if (selectedValue) {
+      const option = options.find((option) => {
+        const optionValue = typeof option === 'string' ? option : option.value;
+        return optionValue === selectedValue;
+      });
+
+      if (!option) {
+        return undefined;
+      }
+
+      return typeof option === 'string' ? option : option.label;
+    }
+  }, [selectedValue, options]);
+
   React.useEffect(() => {
     setIsOpen(!!open);
+  }, [open]);
 
-    if (open) {
+  React.useEffect(() => {
+    if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [open]);
+  }, [isOpen]);
 
   React.useEffect(() => {
     if (value !== undefined) {
@@ -284,7 +308,7 @@ export const Dropdown = ({
         className={`${isOpen ? "open" : ""}`}
         disabled={isDisabled}
         onClick={onClick}>
-        <span>{selectedValue || placeholder || firstOption}</span>
+        <span>{displayValue || placeholder || firstOption}</span>
 
         <svg
           width="16"
