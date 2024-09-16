@@ -5,5 +5,8 @@ export * from "./Divider";
 export * from "./Dropdown";
 export * from "./Icon";
 export * from "./Label";
+export * from "./Panels";
+export * from "./Tab";
 export * from "./Tag";
 export * from "./TextField";
+export * from "./View";
