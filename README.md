@@ -23,6 +23,7 @@ The following components are available in the library:
 - [x] Dropdown
 - [x] Icon
 - [x] Label
+- [x] Loader
 - [x] Panels
 - [x] Tag
 - [x] TextField
