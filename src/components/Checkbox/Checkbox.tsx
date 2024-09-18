@@ -114,7 +114,7 @@ export const Checkbox = ({
   return (
     <CheckboxElm
       htmlFor={id}
-      className={`${className || ""} ${disabled ? "disabled" : ""}`}
+      className={`vscrui-checkbox ${className || ""} ${disabled ? "disabled" : ""}`}
       {...rest}>
       <input
         id={id}
@@ -127,7 +127,7 @@ export const Checkbox = ({
 
       {indeterminate === true ? <Indeterminate /> : <Checkmark checked={isChecked} />}
 
-      {children && <SpanElm>{children}</SpanElm>}
+      {children && <SpanElm className={`vscrui-checkbox__label`}>{children}</SpanElm>}
     </CheckboxElm>
   );
 };

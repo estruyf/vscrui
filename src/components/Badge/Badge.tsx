@@ -29,7 +29,7 @@ export const Badge = ({
   ...rest
 }: React.PropsWithChildren<IBadgeProps>) => {
   return (
-    <BadgeElm className={className || ""} {...rest}>
+    <BadgeElm className={`vscrui-badge ${className || ""}`} {...rest}>
       {children}
     </BadgeElm>
   );

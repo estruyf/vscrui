@@ -49,10 +49,11 @@ const LoaderLineElm = styled.div`
 `;
 
 export const Loader = ({
+  className,
   ...rest
 }: React.PropsWithChildren<ILoaderProps>) => {
   return (
-    <LoaderBgElm {...rest}>
+    <LoaderBgElm className={`vscrui-loader ${className || ""}`} {...rest}>
       <LoaderElm>
         <LoaderLineElm />
       </LoaderElm>

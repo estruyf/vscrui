@@ -51,7 +51,7 @@ export const Icon = ({
 
   return (
     <IconElm
-      className={`codicon codicon-${name} ${spin ? "codicon-spin" : ""} ${className || ""}`}
+      className={`vscrui-icon codicon codicon-${name} ${spin ? "codicon-spin" : ""} ${className || ""}`}
       style={{ fontSize: iconSize }}
       {...rest}
     />

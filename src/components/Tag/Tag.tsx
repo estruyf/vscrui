@@ -25,7 +25,7 @@ export const Tag = ({
 }: React.PropsWithChildren<ITagProps>) => {
   return (
     <TagElm
-      className={`${className || ""}`}
+      className={`vscrui-tag ${className || ""}`}
       {...rest}>
       {children}
     </TagElm>

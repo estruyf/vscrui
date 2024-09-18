@@ -24,6 +24,7 @@ The following components are available in the library:
 - [x] Icon
 - [x] Label
 - [x] Loader
+- [x] Pane (collapsible)
 - [x] Panels
 - [x] Tag
 - [x] TextField

@@ -98,13 +98,14 @@ export const TextField = ({
 
   return (
     <TextFieldElm
-      className={`${className || ""}`}
+      className={`vscrui-textfield ${className || ""}`}
       {...rest}>
       {children && <LabelElm htmlFor={id}>{children}</LabelElm>}
 
       <InputElm
         type='text'
         id={id}
+        className='vscrui-textfield__input'
         defaultValue={inputValue}
         placeholder={placeholder}
         disabled={disabled}

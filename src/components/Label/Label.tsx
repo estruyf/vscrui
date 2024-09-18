@@ -26,7 +26,7 @@ export const Label = ({
 }: React.PropsWithChildren<ILabelProps>) => {
   return (
     <LabelElm
-      className={`${className || ""}`}
+      className={`vscrui-label ${className || ""}`}
       {...rest}>
       {children}
     </LabelElm>

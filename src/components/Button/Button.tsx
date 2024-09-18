@@ -99,7 +99,7 @@ export const Button = ({
 }: React.PropsWithChildren<IButtonProps>) => {
   return (
     <ButtonElm
-      className={`${appearance} ${className || ""}`}
+      className={`vscrui-button ${appearance} ${className || ""}`}
       disabled={disabled}
       onClick={onClick}
       type={type}

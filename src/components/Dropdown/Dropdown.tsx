@@ -300,12 +300,12 @@ export const Dropdown = ({
 
   return (
     <SelectElm
-      className={`${isDisabled ? "disabled" : ""} ${className || ""}`}
+      className={`vscrui-dropdown ${isDisabled ? "disabled" : ""} ${className || ""}`}
       onKeyDown={onKeyDown}
       ref={dropdownRef}
       {...rest}>
       <TriggerElm
-        className={`${isOpen ? "open" : ""}`}
+        className={`vscrui-checkbox__trigger ${isOpen ? "open" : ""}`}
         disabled={isDisabled}
         onClick={onClick}>
         <span>{displayValue || placeholder || firstOption}</span>
@@ -327,7 +327,9 @@ export const Dropdown = ({
 
       {
         isOpen && !isDisabled && (
-          <ListboxElm position={position}>
+          <ListboxElm
+            className={`vscrui-checkbox__listbox`}
+            position={position}>
             <ul>
               {
                 options.map((option, index) => {
@@ -339,7 +341,7 @@ export const Dropdown = ({
                     <li key={index} onMouseEnter={() => setActiveIndex(index)}>
                       <ListItemElm
                         key={index}
-                        className={`${(activeIndex === null && selectedValue === value) || (activeIndex === index) ? "active" : ""}`}
+                        className={`vscrui-checkbox__listbox__item ${(activeIndex === null && selectedValue === value) || (activeIndex === index) ? "active" : ""}`}
                         aria-selected={selectedValue === value ? "true" : "false"}
                         disabled={disabled}
                         onClick={() => onSelect(value)}>

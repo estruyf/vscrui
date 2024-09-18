@@ -18,6 +18,6 @@ export const Divider: React.FunctionComponent<IDividerProps> = ({
   ...rest
 }: React.PropsWithChildren<IDividerProps>) => {
   return (
-    <HrElm className={`${className || ""}`} {...rest} />
+    <HrElm className={`vscrui-divider ${className || ""}`} {...rest} />
   );
 };

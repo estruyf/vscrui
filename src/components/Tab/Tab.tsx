@@ -54,7 +54,7 @@ export const Tab = ({
 }: React.PropsWithChildren<ITabProps>) => {
   return (
     <TabElm
-      className={`${className || ""}`}
+      className={`vscrui-tab ${className || ""}`}
       onClick={onClick}
       aria-selected={isSelected}
       role="tab"

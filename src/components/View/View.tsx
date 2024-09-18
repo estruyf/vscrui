@@ -15,6 +15,9 @@ const ViewElm = styled.section<{ isVisible?: boolean }>`
   line-height: normal;
   padding: 10px 6px;
   display: ${props => (props.isVisible ? 'block' : 'none')};
+  height: ${props => (props.isVisible ? 'auto' : '0')};
+  transition: all 0.1s;
+  transition-behavior: allow-discrete;
 `;
 
 export const View = ({
@@ -25,6 +28,7 @@ export const View = ({
 }: React.PropsWithChildren<IViewProps>) => {
   return (
     <ViewElm
+      className={`vscrui-view ${className || ''}`}
       isVisible={isVisible}
       {...rest}>
       {children}

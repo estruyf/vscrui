@@ -79,11 +79,12 @@ export const Panels = ({
 
   return (
     <WrapperElm
-      className={`${className || ""}`}
+      className={`vscrui-panels ${className || ""}`}
       aria-label="Panels"
       {...rest}
     >
       <TabListElm
+        className={`vscrui-panels__tablist`}
         role="tablist">
         {tabs.map((tab) => (
           viewIds.includes(tab.id) && (
@@ -105,7 +106,7 @@ export const Panels = ({
         ))}
       </TabListElm>
 
-      <TabPanelElm>
+      <TabPanelElm className='vscrui-panels__views'>
         {views.map((view) => (
           tabIds.includes(view.id) && (
             <View
