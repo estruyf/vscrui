@@ -120,7 +120,7 @@ const TextArea = ({
 
   return (
     <TextAreaElm
-      className={`vscrui-TextArea ${className || ""}`}
+      className={`vscrui-textArea ${className || ""}`}
       {...rest}>
       {children && <LabelElm htmlFor={id}>{children}</LabelElm>}
 
