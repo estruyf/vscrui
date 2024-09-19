@@ -61,7 +61,7 @@ const HeadingElm = styled.h3`
   margin: 0;
 `;
 
-export const PaneHeader = ({
+const PaneHeader = ({
   actions,
   children,
   open,
@@ -95,3 +95,6 @@ export const PaneHeader = ({
     </HeaderElm>
   );
 };
+
+PaneHeader.displayName = 'VSCRUI_PaneHeader';
+export { PaneHeader };

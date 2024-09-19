@@ -18,7 +18,7 @@ const TagElm = styled.div`
   text-transform: uppercase;
 `;
 
-export const Tag = ({
+const Tag = ({
   children,
   className,
   ...rest
@@ -31,3 +31,6 @@ export const Tag = ({
     </TagElm>
   );
 };
+
+Tag.displayName = 'VSCRUI_Tag';
+export { Tag };

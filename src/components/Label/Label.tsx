@@ -19,7 +19,7 @@ const LabelElm = styled.label`
   white-space: nowrap;
 `;
 
-export const Label = ({
+const Label = ({
   children,
   className,
   ...rest
@@ -32,3 +32,6 @@ export const Label = ({
     </LabelElm>
   );
 };
+
+Label.displayName = 'VSCRUI_Label';
+export { Label };

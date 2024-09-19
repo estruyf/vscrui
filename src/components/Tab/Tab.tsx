@@ -45,7 +45,7 @@ const TabElm = styled.button`
   }
 `;
 
-export const Tab = ({
+const Tab = ({
   children,
   isSelected,
   className,
@@ -64,3 +64,6 @@ export const Tab = ({
     </TabElm>
   );
 };
+
+Tab.displayName = 'VSCRUI_Tab';
+export { Tab };

@@ -35,7 +35,7 @@ const IconElm = styled.i`
   }
 `;
 
-export const Icon = ({
+const Icon = ({
   className,
   name,
   spin = false,
@@ -57,3 +57,6 @@ export const Icon = ({
     />
   );
 };
+
+Icon.displayName = 'VSCRUI_Icon';
+export { Icon };

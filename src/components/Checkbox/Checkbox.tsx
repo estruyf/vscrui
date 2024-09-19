@@ -83,7 +83,7 @@ const Indeterminate = () => {
 };
 
 
-export const Checkbox = ({
+const Checkbox = ({
   checked,
   children,
   className,
@@ -131,3 +131,6 @@ export const Checkbox = ({
     </CheckboxElm>
   );
 };
+
+Checkbox.displayName = 'VSCRUI_Checkbox';
+export { Checkbox };

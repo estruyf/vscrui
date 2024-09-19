@@ -6,7 +6,7 @@ export interface IViewProps extends BaseComponentProps {
   isVisible?: boolean;
 }
 
-const ViewElm = styled.section<{ isVisible?: boolean }>`
+const ViewElm = styled.section<{ hidden?: boolean }>`
   color: inherit;
   background-color: transparent;
   border: 1px solid transparent;
@@ -14,24 +14,27 @@ const ViewElm = styled.section<{ isVisible?: boolean }>`
   font-size: var(--vscode-font-size, 13px);
   line-height: normal;
   padding: 10px 6px;
-  display: ${props => (props.isVisible ? 'block' : 'none')};
-  height: ${props => (props.isVisible ? 'auto' : '0')};
+  display: ${props => (props.hidden ? 'none' : 'block')};
+  height: ${props => (props.hidden ? '0' : 'auto')};
   transition: all 0.1s;
   transition-behavior: allow-discrete;
 `;
 
-export const View = ({
+const View = ({
   className,
   children,
-  isVisible,
+  isVisible = false,
   ...rest
 }: React.PropsWithChildren<IViewProps>) => {
   return (
     <ViewElm
       className={`vscrui-view ${className || ''}`}
-      isVisible={isVisible}
+      hidden={!isVisible}
       {...rest}>
       {children}
     </ViewElm>
   );
 };
+
+View.displayName = 'VSCRUI_View';
+export { View };

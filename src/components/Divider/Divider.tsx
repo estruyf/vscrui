@@ -13,7 +13,7 @@ const HrElm = styled.hr`
   width: 100%;
 `;
 
-export const Divider: React.FunctionComponent<IDividerProps> = ({
+const Divider: React.FunctionComponent<IDividerProps> = ({
   className,
   ...rest
 }: React.PropsWithChildren<IDividerProps>) => {
@@ -21,3 +21,6 @@ export const Divider: React.FunctionComponent<IDividerProps> = ({
     <HrElm className={`vscrui-divider ${className || ""}`} {...rest} />
   );
 };
+
+Divider.displayName = 'VSCRUI_Divider';
+export { Divider };

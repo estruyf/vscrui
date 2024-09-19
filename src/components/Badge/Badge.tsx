@@ -23,7 +23,7 @@ const BadgeElm = styled.span`
   text-align: center;
 `;
 
-export const Badge = ({
+const Badge = ({
   className,
   children,
   ...rest
@@ -34,3 +34,6 @@ export const Badge = ({
     </BadgeElm>
   );
 };
+
+Badge.displayName = 'VSCRUI_Badge';
+export { Badge };

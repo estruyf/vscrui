@@ -30,14 +30,14 @@ const ViewStyled = styled(View)`
   padding: unset;
 `;
 
-export const Pane = ({
+const Pane = ({
   actions = [],
   children,
   open = false,
   title,
   onClick,
 }: React.PropsWithChildren<IPaneProps>) => {
-  const [isOpen, setIsOpen] = React.useState(open);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const onOpen = React.useCallback(() => {
     setIsOpen(!isOpen);
@@ -63,3 +63,6 @@ export const Pane = ({
     </PaneElm>
   );
 };
+
+Pane.displayName = 'VSCRUI_Pane';
+export { Pane };

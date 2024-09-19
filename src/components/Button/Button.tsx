@@ -88,7 +88,7 @@ const ButtonElm = styled.button`
   }
 `;
 
-export const Button = ({
+const Button = ({
   appearance = 'primary',
   className,
   children,
@@ -109,3 +109,6 @@ export const Button = ({
     </ButtonElm>
   );
 };
+
+Button.displayName = 'VSCRUI_Badge';
+export { Button };

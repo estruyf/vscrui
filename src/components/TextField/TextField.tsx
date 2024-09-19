@@ -73,7 +73,7 @@ const InputElm = styled.input`
   }
 `;
 
-export const TextField = ({
+const TextField = ({
   className,
   children,
   disabled,
@@ -115,3 +115,6 @@ export const TextField = ({
     </TextFieldElm>
   );
 };
+
+TextField.displayName = 'VSCRUI_TextField';
+export { TextField };

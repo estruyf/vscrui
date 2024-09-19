@@ -51,7 +51,7 @@ const TabPanelElm = styled.div`
   position: relative;
 `;
 
-export const Panels = ({
+const Panels = ({
   className,
   tabs,
   views,
@@ -123,3 +123,6 @@ export const Panels = ({
     </WrapperElm>
   );
 };
+
+Panels.displayName = 'VSCRUI_Panels';
+export { Panels };

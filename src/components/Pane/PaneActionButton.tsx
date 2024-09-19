@@ -31,7 +31,7 @@ const ActionElm = styled.button`
   }
 `;
 
-export const PaneActionButton = ({
+const PaneActionButton = ({
   iconName,
   onClick,
 }: React.PropsWithChildren<IPaneActionButtonProps>) => {
@@ -48,3 +48,6 @@ export const PaneActionButton = ({
     </ActionElm>
   );
 };
+
+PaneActionButton.displayName = 'VSCRUI_PaneActionButton';
+export { PaneActionButton };

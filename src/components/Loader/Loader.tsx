@@ -48,7 +48,7 @@ const LoaderLineElm = styled.div`
   }
 `;
 
-export const Loader = ({
+const Loader = ({
   className,
   ...rest
 }: React.PropsWithChildren<ILoaderProps>) => {
@@ -60,3 +60,6 @@ export const Loader = ({
     </LoaderBgElm>
   );
 };
+
+Loader.displayName = 'VSCRUI_Loader';
+export { Loader };

@@ -170,7 +170,7 @@ const ListItemElm = styled.button`
   }
 `;
 
-export const Dropdown = ({
+const Dropdown = ({
   className,
   disabled,
   open,
@@ -358,3 +358,6 @@ export const Dropdown = ({
     </SelectElm>
   );
 };
+
+Dropdown.displayName = 'VSCRUI_Dropdown';
+export { Dropdown };
