@@ -27,6 +27,7 @@ The following components are available in the library:
 - [x] Pane (collapsible)
 - [x] Panels
 - [x] Tag
+- [x] TextArea
 - [x] TextField
 
 > [!WARNING]
@@ -34,6 +35,7 @@ The following components are available in the library:
 
 ### Future Components
 
+- [ ] Table
 - [ ] Tooltip
 
 ## Installation
