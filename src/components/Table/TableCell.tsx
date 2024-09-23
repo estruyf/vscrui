@@ -2,27 +2,40 @@ import * as React from 'react';
 import { BaseComponentProps } from '../../models';
 import styled from 'styled-components';
 
-export interface ITableCellProps extends BaseComponentProps { }
+export interface ITableCellProps extends BaseComponentProps {
+  colspan?: number;
+}
 
-const TableCellElm = styled.div`
-  display: grid;
-  padding: 1px 0;
+export const _TableCellElm = styled.div`
+  color: var(--vscode-foreground);
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  padding: 4px 12px;
+  opacity: 1;
   box-sizing: border-box;
-  width: 100%;
-  background: transparent;
+  line-height: normal;
+  font-weight: 400;
+  border: solid 1px transparent;
+  border-radius: 2px;
+  white-space: wrap;
+  overflow-wrap: anywhere;
 `;
 
-export const TableCell = ({
+const TableCell = ({
   children,
   className,
+  colspan,
   ...rest
 }: React.PropsWithChildren<ITableCellProps>) => {
   return (
-    <TableCellElm
+    <_TableCellElm
       className={`vscrui_table_cell ${className || ""}`}
       {...rest}
     >
       {children}
-    </TableCellElm>
+    </_TableCellElm>
   );
 };
+
+TableCell.displayName = 'VSCRUI_TableCell';
+export { TableCell };

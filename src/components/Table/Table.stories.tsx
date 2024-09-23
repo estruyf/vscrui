@@ -13,20 +13,22 @@ export const Default: StoryObj<typeof Table> = {
   args: {
     className: undefined,
     children: [
-      <TableRow>
-        <TableCell>1</TableCell>
-        <TableCell>2</TableCell>
-        <TableCell>3</TableCell>
-      </TableRow>,
       <TableRow isHeader>
         <TableCell>Header 1</TableCell>
         <TableCell>Header 2</TableCell>
         <TableCell>Header 3</TableCell>
+        <TableCell>Header 4</TableCell>
       </TableRow>,
       <TableRow>
         <TableCell>1</TableCell>
         <TableCell>2</TableCell>
         <TableCell>3</TableCell>
+        <TableCell>4</TableCell>
+      </TableRow>,
+      <TableRow>
+        <TableCell>1</TableCell>
+        <TableCell>2</TableCell>
+        <TableCell colspan={2}>3</TableCell>
       </TableRow>
     ]
   }

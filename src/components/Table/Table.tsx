@@ -1,20 +1,35 @@
 import * as React from 'react';
 import { BaseComponentProps } from '../../models';
-import { TableRow } from '.';
+import { _TableRowElm, TableRow } from '.';
 import styled from 'styled-components';
 
-export interface ITableProps extends BaseComponentProps { }
+export interface ITableProps extends BaseComponentProps {
+  stripped?: boolean;
+}
 
 const TableElm = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
   width: 100%;
+
+  &.stripped {
+    ${_TableRowElm} {
+      &:nth-child(odd) {
+        background-color: var(--vscode-keybindingTable-rowsBackground);
+
+        &:hover {
+          background: var(--vscode-list-hoverBackground);
+        }
+      }
+    }
+  }
 `;
 
 const Table = ({
   children,
   className,
+  stripped = true,
   ...rest
 }: React.PropsWithChildren<ITableProps>) => {
 
@@ -32,7 +47,7 @@ const Table = ({
 
   return (
     <TableElm
-      className={`vscrui_table ${className || ""}`}
+      className={`vscrui_table ${className || ""} ${stripped ? 'stripped' : ''}`}
       {...rest}
     >
       {headerRow}
