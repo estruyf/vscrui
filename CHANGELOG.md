@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.2.0] - 2024-xx-xx
+## [0.2.0] - 2024-10-28
 
 - Added the following components:
   - Table
