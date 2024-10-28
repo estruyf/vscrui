@@ -61,8 +61,14 @@ const Panels = ({
 }: React.PropsWithChildren<IPanelsProps>) => {
   const [selectedTab, setSelectedTab] = React.useState(activeTab);
 
-  const tabIds = React.useMemo(() => tabs.map((tab) => tab.id), [tabs]);
   const viewIds = React.useMemo(() => views.map((view) => view.id), [views]);
+
+  const onViewChange = (tab: ITab) => {
+    setSelectedTab(tab.id);
+    onTabChange && onTabChange(tab.id);
+  }
+
+  const visibleView = React.useMemo(() => views.find((view) => view.id === selectedTab), [views, selectedTab]);
 
   React.useEffect(() => {
     if (activeTab) {
@@ -91,10 +97,7 @@ const Panels = ({
             <Tab
               key={tab.id}
               isSelected={tab.id === selectedTab}
-              onClick={() => {
-                setSelectedTab(tab.id);
-                onTabChange && onTabChange(tab.id);
-              }}
+              onClick={() => onViewChange(tab)}
               style={{
                 gridColumn: tabs.indexOf(tab) + 1,
               }}
@@ -107,18 +110,18 @@ const Panels = ({
       </TabListElm>
 
       <TabPanelElm className='vscrui-panels__views'>
-        {views.map((view) => (
-          tabIds.includes(view.id) && (
+        {
+          visibleView && (
             <View
-              key={view.id}
-              isVisible={view.id === selectedTab}
+              key={visibleView.id}
+              isVisible={visibleView.id === selectedTab}
               role="tabpanel"
-              aria-labelledby={view.id}
+              aria-labelledby={visibleView.id}
             >
-              {view.content}
+              {visibleView.content}
             </View>
           )
-        ))}
+        }
       </TabPanelElm>
     </WrapperElm>
   );

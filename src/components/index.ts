@@ -9,6 +9,8 @@ export * from "./Loader";
 export * from "./Pane";
 export * from "./Panels";
 export * from "./Tab";
+export * from "./Table";
 export * from "./Tag";
+export * from "./TextArea";
 export * from "./TextField";
 export * from "./View";
