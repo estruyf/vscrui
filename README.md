@@ -37,6 +37,7 @@ The following components are available in the library:
 ### Future Components
 
 - [ ] Tooltip
+- [ ] Multi-select
 
 ## Installation
 
