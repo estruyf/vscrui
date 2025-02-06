@@ -9,6 +9,7 @@ export interface ITextFieldProps extends Omit<BaseComponentProps, 'onChange'> {
   readonly?: boolean;
   placeholder?: string;
   value?: string;
+  defaultValue?: string;
   onChange?: (value: string) => void;
 }
 
@@ -79,6 +80,7 @@ const TextField = ({
   disabled,
   readonly,
   value,
+  defaultValue,
   onChange,
   placeholder,
   ...rest
@@ -106,7 +108,8 @@ const TextField = ({
         type='text'
         id={id}
         className='vscrui-textfield__input'
-        defaultValue={inputValue}
+        value={inputValue}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         disabled={disabled}
         readOnly={readonly}
