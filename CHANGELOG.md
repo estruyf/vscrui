@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.2.1] - 2024-02-06
+
+- [#3](https://github.com/estruyf/vscrui/issues/3): Fix for `TextField` component implemented by [Lao](https://github.com/maoguy)
+
 ## [0.2.0] - 2024-10-28
 
 - Added the following components:
