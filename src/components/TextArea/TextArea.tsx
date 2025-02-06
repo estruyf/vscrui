@@ -10,8 +10,9 @@ export interface ITextAreaProps extends Omit<BaseComponentProps, 'onChange'> {
   disabled?: boolean;
   readonly?: boolean;
   placeholder?: string;
-  resize: TextAreaResize;
+  resize?: TextAreaResize;
   value?: string;
+  defaultValue?: string;
   onChange?: (value: string) => void;
 }
 
@@ -100,6 +101,7 @@ const TextArea = ({
   disabled,
   readonly,
   value,
+  defaultValue,
   onChange,
   placeholder,
   resize,
@@ -127,7 +129,8 @@ const TextArea = ({
       <InputElm
         id={id}
         className='vscrui-TextArea__input'
-        defaultValue={inputValue}
+        value={inputValue}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         data-resize={resize}
         disabled={disabled}
