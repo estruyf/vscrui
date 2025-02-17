@@ -205,7 +205,7 @@ const Dropdown = ({
       onChange && onChange(selectedOption);
     }
     setIsOpen(false);
-  }, [selectedValue]);
+  }, [selectedValue, onChange, options]);
 
   const onKeyDown = React.useCallback((e: React.KeyboardEvent) => {
     if (isOpen) {
@@ -232,7 +232,7 @@ const Dropdown = ({
       setIsOpen(false);
       onSelect(value);
     }
-  }, [activeIndex, isOpen, onSelect]);
+  }, [activeIndex, isOpen, onSelect, options]);
 
   const isDisabled = React.useMemo(() => disabled || options.length === 0, [disabled, options]);
 
@@ -280,7 +280,7 @@ const Dropdown = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, handleClickOutside]);
 
   React.useEffect(() => {
     if (value !== undefined) {

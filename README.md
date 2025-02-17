@@ -52,7 +52,7 @@ npm install vscrui
 To use the library, import the components you need and use them in your React components:
 
 ```tsx
-import { Badge, Button, Checkbox, Label, Tag } from 'vscrui';
+import { Badge, Button, Checkbox, Label, Tag } from "vscrui";
 ```
 
 ## Development
@@ -67,3 +67,29 @@ import { Badge, Button, Checkbox, Label, Tag } from 'vscrui';
 
 - <https://github.com/facebook/sapling/tree/main/addons/components>
 - <https://github.com/microsoft/vscode-webview-ui-toolkit>
+
+## Sponsors
+
+If you find this project useful, please consider becoming a sponsor to help Open Source sustainable. Thank you!
+
+<p align="center">
+  <a href="https://github.com/sponsors/estruyf" title="Sponsor Elio Struyf" target="_blank">
+    <img src="https://img.shields.io/badge/Sponsor-Elio%20Struyf%20%E2%9D%A4-%23fe8e86?logo=GitHub&style=flat-square" height="25px" alt="Sponsor @estruyf" />
+  </a>
+</p>
+
+<br />
+
+<p align="center">
+  <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Festruyf%2Fvscrui">
+    <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Festruyf%2Fvscrui&labelColor=%23555555&countColor=%2397ca00" height="25px" alt="VSCRUI visitors" />
+  </a>
+</p>
+
+<br />
+
+<p align="center">
+  <a href="https://struyfconsulting.com" title="Hire Elio Struyf via Struyf Consulting" target="_blank">
+    <img src="./assets/struyf-consulting.webp" height="25px" alt="Struyf Consulting Logo" />
+  </a>
+</p>
