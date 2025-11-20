@@ -1,16 +1,95 @@
 # Visual Studio Code - React UI Library (vscrui)
 
-> [!WARNING]
-> This project is in an early stage of development. Feel free to contribute or use it at your own risk.
-
 The `vscrui` is a React components library for building [webview-based extensions](https://code.visualstudio.com/api/extension-guides/webview) with React in Visual Studio Code.
 
 > [!NOTE]
-> The library is based on the [VS Code Webview UI Toolkit](https://github.com/microsoft/vscode-webview-ui-toolkit), which has announced to be deprecated on January 1, 2025. See the [deprecation announcement](https://github.com/microsoft/vscode-webview-ui-toolkit/issues/561) for more details. Instead of providing web components, this library provides React components.
+> The library is based on the [VS Code Webview UI Toolkit](https://github.com/microsoft/vscode-webview-ui-toolkit), which was deprecated on January 6, 2025. See the [deprecation announcement](https://github.com/microsoft/vscode-webview-ui-toolkit/issues/561) for more details. Instead of providing web components, this library provides React components.
 
-## Contributing
+## Installation
 
-If you want to contribute, please find an open issue you would like to work on and leave us a comment. If you have any questions, feel free to ask in the issue or in the Discord server.
+To install the library, run the following command:
+
+```bash
+npm install vscrui
+```
+
+> [!IMPORTANT]
+> When using the `Icon` component, make sure to import the Codicon CSS file in your project. You can use the following import statement: `import 'vscrui/dist/codicon.css';`.
+
+## Usage
+
+To use the library, import the components you need and use them in your React components.
+
+```tsx
+import { Badge, Button, Checkbox, Label, Tag } from "vscrui";
+import "vscrui/dist/codicon.css"; // If using Icons
+```
+
+### Button
+
+```tsx
+import { Button } from "vscrui";
+
+<Button appearance="primary" onClick={() => console.log("Clicked")}>
+  Primary Button
+</Button>
+
+<Button appearance="secondary">
+  Secondary Button
+</Button>
+
+<Button appearance="icon" aria-label="Add">
+  <span className="codicon codicon-plus"></span>
+</Button>
+```
+
+### TextField
+
+```tsx
+import { TextField } from "vscrui";
+
+<TextField 
+  placeholder="Enter text..." 
+  onChange={(value) => console.log(value)}
+>
+  Label Text
+</TextField>
+```
+
+### Dropdown
+
+```tsx
+import { Dropdown } from "vscrui";
+
+<Dropdown
+  options={["Option 1", "Option 2", "Option 3"]}
+  value="Option 1"
+  onChange={(value) => console.log(value)}
+/>
+
+// With object options
+<Dropdown
+  options={[
+    { label: "Option 1", value: "opt1" },
+    { label: "Option 2", value: "opt2" }
+  ]}
+  value="opt1"
+  onChange={(value) => console.log(value)}
+/>
+```
+
+### Checkbox
+
+```tsx
+import { Checkbox } from "vscrui";
+
+<Checkbox 
+  checked={true} 
+  onChange={(checked) => console.log(checked)}
+>
+  Checkbox Label
+</Checkbox>
+```
 
 ## Components
 
@@ -31,29 +110,10 @@ The following components are available in the library:
 - [x] TextArea
 - [x] TextField
 
-> [!WARNING]
-> When using the `Icon` component, make sure to import the Codicon CSS file in your project. You can use the following import statement: `import 'vscrui/dist/codicon.css';`.
-
 ### Future Components
 
 - [ ] Tooltip
 - [ ] Multi-select
-
-## Installation
-
-To install the library, run the following command:
-
-```bash
-npm install vscrui
-```
-
-## Usage
-
-To use the library, import the components you need and use them in your React components:
-
-```tsx
-import { Badge, Button, Checkbox, Label, Tag } from "vscrui";
-```
 
 ## Development
 
@@ -62,6 +122,10 @@ import { Badge, Button, Checkbox, Label, Tag } from "vscrui";
 3. Run `npm run storybook` to start the development server
 4. Open the `http://localhost:6006` in your browser
 5. Test out the components or make changes to the library
+
+## Contributing
+
+If you want to contribute, please find an open issue you would like to work on and leave us a comment. If you have any questions, feel free to ask in the issue or in the Discord server.
 
 ## References
 
