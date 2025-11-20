@@ -25,7 +25,20 @@ import { Badge, Button, Checkbox, Label, Tag } from "vscrui";
 import "vscrui/dist/codicon.css"; // If using Icons
 ```
 
-### Button
+### Components
+
+<details>
+<summary>Badge</summary>
+
+```tsx
+import { Badge } from "vscrui";
+
+<Badge>99</Badge>
+```
+</details>
+
+<details>
+<summary>Button</summary>
 
 ```tsx
 import { Button } from "vscrui";
@@ -42,21 +55,35 @@ import { Button } from "vscrui";
   <span className="codicon codicon-plus"></span>
 </Button>
 ```
+</details>
 
-### TextField
+<details>
+<summary>Checkbox</summary>
 
 ```tsx
-import { TextField } from "vscrui";
+import { Checkbox } from "vscrui";
 
-<TextField 
-  placeholder="Enter text..." 
-  onChange={(value) => console.log(value)}
+<Checkbox 
+  checked={true} 
+  onChange={(checked) => console.log(checked)}
 >
-  Label Text
-</TextField>
+  Checkbox Label
+</Checkbox>
 ```
+</details>
 
-### Dropdown
+<details>
+<summary>Divider</summary>
+
+```tsx
+import { Divider } from "vscrui";
+
+<Divider />
+```
+</details>
+
+<details>
+<summary>Dropdown</summary>
 
 ```tsx
 import { Dropdown } from "vscrui";
@@ -77,23 +104,135 @@ import { Dropdown } from "vscrui";
   onChange={(value) => console.log(value)}
 />
 ```
+</details>
 
-### Checkbox
+<details>
+<summary>Icon</summary>
 
 ```tsx
-import { Checkbox } from "vscrui";
+import { Icon } from "vscrui";
 
-<Checkbox 
-  checked={true} 
-  onChange={(checked) => console.log(checked)}
->
-  Checkbox Label
-</Checkbox>
+<Icon name="add" />
+<Icon name="refresh" spin />
 ```
+</details>
 
-## Components
+<details>
+<summary>Label</summary>
 
-The following components are available in the library:
+```tsx
+import { Label } from "vscrui";
+
+<Label>Label Text</Label>
+```
+</details>
+
+<details>
+<summary>Loader</summary>
+
+```tsx
+import { Loader } from "vscrui";
+
+<Loader />
+```
+</details>
+
+<details>
+<summary>Pane</summary>
+
+```tsx
+import { Pane } from "vscrui";
+
+<Pane 
+  title="Pane Title" 
+  actions={[
+    { iconName: "refresh", onClick: () => console.log("Refresh") }
+  ]}
+>
+  <p>Pane Content</p>
+</Pane>
+```
+</details>
+
+<details>
+<summary>Panels (Tabs)</summary>
+
+```tsx
+import { Panels } from "vscrui";
+
+<Panels
+  tabs={[
+    { id: "tab1", label: "Tab 1" },
+    { id: "tab2", label: "Tab 2" }
+  ]}
+  views={[
+    { id: "tab1", content: <p>Tab 1 Content</p> },
+    { id: "tab2", content: <p>Tab 2 Content</p> }
+  ]}
+/>
+```
+</details>
+
+<details>
+<summary>Table</summary>
+
+```tsx
+import { Table, TableRow, TableCell } from "vscrui";
+
+<Table>
+  <TableRow isHeader>
+    <TableCell>Header 1</TableCell>
+    <TableCell>Header 2</TableCell>
+  </TableRow>
+  <TableRow>
+    <TableCell>Row 1 Col 1</TableCell>
+    <TableCell>Row 1 Col 2</TableCell>
+  </TableRow>
+</Table>
+```
+</details>
+
+<details>
+<summary>Tag</summary>
+
+```tsx
+import { Tag } from "vscrui";
+
+<Tag>Tag Text</Tag>
+```
+</details>
+
+<details>
+<summary>TextArea</summary>
+
+```tsx
+import { TextArea } from "vscrui";
+
+<TextArea 
+  placeholder="Enter text..." 
+  onChange={(value) => console.log(value)}
+>
+  Label Text
+</TextArea>
+```
+</details>
+
+<details>
+<summary>TextField</summary>
+
+```tsx
+import { TextField } from "vscrui";
+
+<TextField 
+  placeholder="Enter text..." 
+  onChange={(value) => console.log(value)}
+>
+  Label Text
+</TextField>
+```
+</details>
+
+## Available Components
 
 - [x] Badge
 - [x] Button
