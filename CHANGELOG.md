@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.0] - 2025-11-20
+
+- Documentation updates on the README
+
 ## [0.2.2] - 2025-02-17
 
 - [#6](https://github.com/estruyf/vscrui/pull/6): fix: Dropdown dependencies by [System233](https://github.com/System233)
