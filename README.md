@@ -232,23 +232,6 @@ import { TextField } from "vscrui";
 ```
 </details>
 
-## Available Components
-
-- [x] Badge
-- [x] Button
-- [x] Checkbox
-- [x] Divider
-- [x] Dropdown
-- [x] Icon
-- [x] Label
-- [x] Loader
-- [x] Pane (collapsible)
-- [x] Panels
-- [x] Table
-- [x] Tag
-- [x] TextArea
-- [x] TextField
-
 ### Future Components
 
 - [ ] Tooltip
