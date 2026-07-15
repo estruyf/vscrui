@@ -1,7 +1,7 @@
 {
   "name": "vscrui",
   "description": "A React components library for building webview-based extensions with React in Visual Studio Code.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "files": [
     "dist"
@@ -42,11 +42,11 @@
     "@storybook/react": "^8.2.9",
     "@storybook/react-vite": "^8.2.9",
     "@storybook/test": "^8.2.9",
-    "@types/react": "^18.3.5",
+    "@types/react": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "@vscode/codicons": "^0.0.36",
     "babel-plugin-styled-components": "^2.1.4",
-    "react": "^18.3.1",
+    "react": "^19.0.0",
     "storybook": "^8.2.9",
     "styled-components": "^6.1.13",
     "tslib": "^2.7.0",

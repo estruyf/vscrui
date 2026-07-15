@@ -26,10 +26,17 @@ export default defineConfig({
       fileName: `[name]`,
     },
     rollupOptions: {
-      external: ['react'],
+      // Externalize React and all of its subpath entry points (react/jsx-runtime,
+      // react/jsx-dev-runtime, ...) plus react-dom, so the consuming app supplies
+      // its own copy. Bundling react/jsx-runtime shipped a React 18 runtime that
+      // accessed React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, which
+      // was removed in React 19 (crash: reading 'ReactCurrentDispatcher').
+      external: [/^react($|\/)/, /^react-dom($|\/)/],
       output: {
         globals: {
-          react: "React"
+          react: "React",
+          "react-dom": "ReactDOM",
+          "react/jsx-runtime": "jsxRuntime"
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'style.css') return 'codicon.css';
