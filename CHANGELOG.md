@@ -1,9 +1,8 @@
 # Change Log
 
-## [0.4.0] - 2026-07-15
+## [1.0.0] - 2026-07-15
 
-- Fixed React 19 support. `react/jsx-runtime` was being bundled into the library, shipping a React 18-era runtime that accessed the removed `React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` internals. Under React 19 this crashed with `Cannot read properties of undefined (reading 'ReactCurrentDispatcher')` and `A React Element from an older version of React was rendered`. The build now externalizes all `react` and `react-dom` subpath entry points so the consuming app supplies its own React copy.
-- Updated dev dependencies to build and test against React 19.
+- Fixed React 19 support. `react/jsx-runtime` was being bundled into the library, shipping a React 18-era runtime that accessed the removed `React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` internals. Under React 19 this crashed with `Cannot read properties of undefined (reading 'ReactCurrentDispatcher')` and `A React Element from an older version of React was rendered`. The build now externalizes all `react` and `react-dom` subpath entry points so the consuming app supplies its own React copy. React 16.8+, 17, 18, and 19 are supported via the peer dependency range.
 
 ## [0.3.0] - 2025-11-20
 
