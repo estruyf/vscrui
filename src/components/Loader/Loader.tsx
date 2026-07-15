@@ -2,7 +2,13 @@ import * as React from 'react';
 import { BaseComponentProps } from '../../models';
 import styled from 'styled-components';
 
-export interface ILoaderProps extends BaseComponentProps { }
+export interface ILoaderProps extends BaseComponentProps {
+  /**
+   * When `true` (default), the loader renders a full-page overlay behind the
+   * progress bar. Set to `false` to show only the progress bar at the top.
+   */
+  overlay?: boolean;
+}
 
 const LoaderBgElm = styled.div`
   background: var(--vscode-editor-background);
@@ -15,10 +21,12 @@ const LoaderBgElm = styled.div`
 `;
 
 const LoaderElm = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 2px;
+  z-index: 9999;
 `;
 
 const LoaderLineElm = styled.div`
@@ -50,13 +58,26 @@ const LoaderLineElm = styled.div`
 
 const Loader = ({
   className,
+  overlay = true,
   ...rest
 }: React.PropsWithChildren<ILoaderProps>) => {
+  const progressBar = (
+    <LoaderElm>
+      <LoaderLineElm />
+    </LoaderElm>
+  );
+
+  if (!overlay) {
+    return (
+      <div className={`vscrui-loader ${className || ""}`} {...rest}>
+        {progressBar}
+      </div>
+    );
+  }
+
   return (
     <LoaderBgElm className={`vscrui-loader ${className || ""}`} {...rest}>
-      <LoaderElm>
-        <LoaderLineElm />
-      </LoaderElm>
+      {progressBar}
     </LoaderBgElm>
   );
 };

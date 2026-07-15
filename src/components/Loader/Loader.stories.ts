@@ -12,5 +12,13 @@ export default meta;
 export const Default: StoryObj<typeof Loader> = {
   args: {
     className: undefined,
+    overlay: true,
+  },
+};
+
+export const ProgressBarOnly: StoryObj<typeof Loader> = {
+  args: {
+    className: undefined,
+    overlay: false,
   },
 };
