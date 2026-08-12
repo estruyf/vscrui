@@ -114,6 +114,10 @@ import { Icon } from "vscrui";
 
 <Icon name="add" />
 <Icon name="refresh" spin />
+
+// The size accepts a number (pixels) or any CSS length
+<Icon name="add" size={24} />
+<Icon name="add" size="1.5rem" />
 ```
 </details>
 
@@ -133,7 +137,11 @@ import { Label } from "vscrui";
 ```tsx
 import { Loader } from "vscrui";
 
+// Full-page overlay with a progress bar on top (default)
 <Loader />
+
+// Progress bar only, without the overlay
+<Loader overlay={false} />
 ```
 </details>
 
@@ -151,6 +159,53 @@ import { Pane } from "vscrui";
 >
   <p>Pane Content</p>
 </Pane>
+
+// The pane is collapsed by default. Use `open` to expand it and `onClick` to
+// react to the user toggling it.
+<Pane
+  title="Pane Title"
+  open={true}
+  onClick={(isOpen) => console.log(isOpen)}
+>
+  <p>Pane Content</p>
+</Pane>
+```
+</details>
+
+<details>
+<summary>PaneActionButton</summary>
+
+The icon button `Pane` renders for each of its `actions`. Use it directly when you compose your own header.
+
+```tsx
+import { PaneActionButton } from "vscrui";
+
+<PaneActionButton 
+  iconName="refresh" 
+  onClick={() => console.log("Refresh")} 
+/>
+```
+</details>
+
+<details>
+<summary>PaneHeader</summary>
+
+The collapsible header used by `Pane`. Use it directly when you want to control the open state yourself.
+
+```tsx
+import { PaneHeader } from "vscrui";
+
+const [open, setOpen] = useState(false);
+
+<PaneHeader
+  open={open}
+  triggerOpen={() => setOpen(!open)}
+  actions={[
+    { iconName: "refresh", onClick: () => console.log("Refresh") }
+  ]}
+>
+  Pane Title
+</PaneHeader>
 ```
 </details>
 
@@ -170,6 +225,35 @@ import { Panels } from "vscrui";
     { id: "tab2", content: <p>Tab 2 Content</p> }
   ]}
 />
+
+// Control which tab is selected and listen for changes
+<Panels
+  tabs={tabs}
+  views={views}
+  activeTab="tab2"
+  onTabChange={(id) => console.log(id)}
+/>
+```
+
+> [!NOTE]
+> A tab is only rendered when its `id` matches the `id` of one of the `views`.
+
+</details>
+
+<details>
+<summary>Tab</summary>
+
+The tab button used by `Panels`. Use it directly when you build your own tab list.
+
+```tsx
+import { Tab } from "vscrui";
+
+<Tab 
+  isSelected={true} 
+  onClick={() => console.log("Selected")}
+>
+  Tab 1
+</Tab>
 ```
 </details>
 
@@ -230,6 +314,43 @@ import { TextField } from "vscrui";
   Label Text
 </TextField>
 ```
+</details>
+
+<details>
+<summary>View</summary>
+
+The panel container used by `Panels` and `Pane`. It stays mounted while hidden, so its content keeps its state.
+
+```tsx
+import { View } from "vscrui";
+
+<View isVisible={true}>
+  <p>View Content</p>
+</View>
+```
+</details>
+
+### Hooks
+
+<details>
+<summary>useVscodeTheme</summary>
+
+Returns the theme kind currently applied to the webview, and updates whenever the user switches themes in VS Code. It reads the `data-vscode-theme-kind` attribute VS Code sets on the `body` element.
+
+```tsx
+import { useVscodeTheme } from "vscrui";
+
+const MyComponent = () => {
+  const { theme } = useVscodeTheme();
+
+  // "vscode-light" | "vscode-dark" | "vscode-high-contrast" | "vscode-high-contrast-light"
+  return <div>The current theme is {theme}</div>;
+};
+```
+
+> [!NOTE]
+> The hook falls back to `vscode-light` when the attribute is not present, for instance when you render your webview outside of VS Code.
+
 </details>
 
 ### Future Components

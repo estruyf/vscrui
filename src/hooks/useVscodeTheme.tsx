@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
 
-export default function useVscodeTheme(options?: any) {
-  const [theme, setTheme] = useState('vscode-light');
+export type VscodeThemeKind =
+  | 'vscode-light'
+  | 'vscode-dark'
+  | 'vscode-high-contrast'
+  | 'vscode-high-contrast-light';
+
+export default function useVscodeTheme(): { theme: VscodeThemeKind } {
+  const [theme, setTheme] = useState<VscodeThemeKind>('vscode-light');
 
   const getTheme = () => {
     const theme = document.body.getAttribute(`data-vscode-theme-kind`);
-    setTheme(theme || 'vscode-light');
+    setTheme((theme as VscodeThemeKind) || 'vscode-light');
   };
 
   useEffect(() => {

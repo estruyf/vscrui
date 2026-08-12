@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.1.0] - 2026-08-12
+
+- Exported the `useVscodeTheme` hook from the package root. The hook was already implemented, but was never exported, so it did not end up in the bundle. It returns the theme kind currently applied to the webview and updates whenever the user switches themes in VS Code. Its accompanying `VscodeThemeKind` type is exported as well, and the unused `options` parameter was dropped from its signature.
+- Documented the `PaneActionButton`, `PaneHeader`, `Tab`, and `View` components on the README. These were already exported by the library, but were missing from the component list.
+- Documented props that were missing from the README: `overlay` on `Loader`, `size` on `Icon`, `open` and `onClick` on `Pane`, and `activeTab` and `onTabChange` on `Panels`.
+
 ## [1.0.0] - 2026-07-15
 
 - Fixed React 19 support. `react/jsx-runtime` was being bundled into the library, shipping a React 18-era runtime that accessed the removed `React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` internals. Under React 19 this crashed with `Cannot read properties of undefined (reading 'ReactCurrentDispatcher')` and `A React Element from an older version of React was rendered`. The build now externalizes all `react` and `react-dom` subpath entry points so the consuming app supplies its own React copy. React 16.8+, 17, 18, and 19 are supported via the peer dependency range.
